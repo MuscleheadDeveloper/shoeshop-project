@@ -28,5 +28,6 @@
   "devDependencies": {
     "concurrently": "^7.4.0",
     "nodemon": "^2.0.15"
-  }
+  },
+  "homepage": "https://diligent-classic.herokuapp.com/"
 }
