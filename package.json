@@ -7,11 +7,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server.js",
+    "frontend": "cd frontend && npm start",
+    "dev": "concurrently \"npm run frontend\" \"npm run server\"",
     "server": "nodemon ./server.js",
     "install-frontend": "cd frontend && npm install",
-    "install-admin": "cd admin && npm install && npm run build",
+    "install-admin": "cd admin && npm install",
     "build": "cd frontend && npm run build",
-    "heroku-postbuild": "npm run install-frontend && npm run install-admin && npm run build"
+    "build-admin": "cd admin && npm run build",
+    "heroku-postbuild": "npm run install-frontend && npm run install-admin && npm run build && npm run build-admin"
   },
   "keywords": [],
   "author": "",
