@@ -6,7 +6,7 @@ import productRoute from "./Routes/ProductRoutes.js";
 import { errorHandler, NotFound } from "./MiddleWare/Errors.js";
 import userRouter from "./Routes/userRoutes.js";
 import orderRouter from "./Routes/orderRoutes.js";
-import path from "path";
+const path = require('path')
 
 dotenv.config();
 connectDb();
@@ -23,11 +23,11 @@ app.get("/api/config/paypal", (req, res) => {
 });
 
 //MIDDLEWARE STATIC && FRONTEND FILE
-app.use(express.static(path.join(__dirname, "frontend", "build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./frontend/build/", "index.html"));
-});
+app.use(express.static(path.resolve("frontend/build")));
 
+app.get("*", (req, res) => {
+  res.sendFile(__dirname, "frontend/build", "index.html");
+});
 //ERROR HANDLERS
 app.use(NotFound);
 app.use(errorHandler);
