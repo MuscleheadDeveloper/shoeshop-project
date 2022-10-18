@@ -9,7 +9,7 @@
     "start": "node ./server.js",
     "frontend": "cd frontend && npm start",
     "dev": "concurrently \"npm run frontend\" \"npm run server\"",
-    "server": "nodemon ./server.js",
+    "server": "node ./server.js",
     "install-frontend": "cd frontend && npm install",
     "install-admin": "cd admin && npm install",
     "build": "cd frontend && npm run build",
