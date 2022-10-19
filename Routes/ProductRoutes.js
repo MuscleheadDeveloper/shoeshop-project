@@ -1,6 +1,6 @@
 import express from "express";
 import asyncHandler from "express-async-handler";
-import { admin, protect } from "../Middleware/AuthMiddleware.js";
+import { protect} from './../MiddleWare/AuthMiddleware.js'
 import Product from "../Models/ProductModel.js";
 
 const productRoute = express.Router();
@@ -31,7 +31,6 @@ productRoute.get(
 productRoute.get(
   "/all",
   protect,
-  admin,
   asyncHandler(async (req, res) => {
     const products = await Product.find({}).sort({ _id: -1 });
     res.json(products);
@@ -56,7 +55,6 @@ productRoute.get(
 productRoute.post(
   "/",
   protect,
-  admin,
   asyncHandler(async (req, res) => {
     const { name, price, description, image, countInStock } = req.body;
     const productExist = await Product.findOne({ name });
@@ -87,7 +85,6 @@ productRoute.post(
 productRoute.put(
   "/:id",
   protect,
-  admin,
   asyncHandler(async (req, res) => {
     const { name, price, description, image, countInStock } = req.body;
     const product = await Product.findById(req.params.id);
