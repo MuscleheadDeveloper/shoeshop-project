@@ -118,7 +118,6 @@ userRouter.put(
 userRouter.get(
   "/",
   protect,
-  admin,
   asyncHandler(async (req, res) => {
     const users = await User.find({});
     res.json(users);
