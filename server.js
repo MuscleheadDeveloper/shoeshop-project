@@ -7,6 +7,11 @@ import { errorHandler, NotFound } from "./MiddleWare/Errors.js";
 import userRouter from "./Routes/userRoutes.js";
 import orderRouter from "./Routes/orderRoutes.js";
 import path from "path";
+import url from "url";
+
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 dotenv.config();
 connectDb();
