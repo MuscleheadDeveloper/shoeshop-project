@@ -19,7 +19,9 @@ export const listProduct = (keyword = " ", pageNumber = " ") => async (dispatch)
     dispatch({
       type: PRODUCT_LIST_REQUEST,
     });
-    const {data} = await axios.get(`/api/products?keyword=${keyword}&pageNumber=${pageNumber}`);
+    const { data } = await axios.get(
+      `https://next-shoeshop-static.onrender.com/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+    );
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data,
