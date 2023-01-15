@@ -1,6 +1,6 @@
 import express from "express";
 import asyncHandler from "express-async-handler";
-import  {admin, protect } from "../Middleware/AuthMiddleware.js";
+import protect  from "../Middleware/AuthMiddleware.js";
 import generateToken from "../utils/generateTokens.js";
 import User from "./../Models/UserModel.js";
 
