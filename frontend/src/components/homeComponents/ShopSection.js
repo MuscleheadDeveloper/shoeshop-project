@@ -1,22 +1,22 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
-import Pagination from "./pagination";
+// import Pagination from "./pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { listProduct } from "../../Redux/Actions/ProductActions";
 import Loading from "../LoadingError/Loading.js";
 import Message from "../LoadingError/Error.js";
 
-const ShopSection = (props) => {
-  const { keyword, pagenumber } = props;
+const ShopSection = () => {
+ 
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products, page, pages } = productList;
+  const { loading, error, products } = productList;
 
   useEffect(() => {
-    dispatch(listProduct(keyword, pagenumber));
-  }, [dispatch, keyword, pagenumber]);
+    dispatch(listProduct());
+  }, [dispatch]);
 
   return (
     <>
@@ -63,7 +63,7 @@ const ShopSection = (props) => {
                 )}
 
                 {/* Pagination */}
-                <Pagination pages={pages} page={page} keyword={keyword ? keyword : ""} />
+                {/* <Pagination pages={pages} page={page} keyword={keyword ? keyword : ""} /> */}
               </div>
             </div>
           </div>

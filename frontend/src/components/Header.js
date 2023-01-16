@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../Redux/Actions/userActions";
 
 const Header = () => {
-  const [keyword, setKeyword] = useState();
+  // const [keyword, setKeyword] = useState();
   const dispatch = useDispatch();
-  let history = useHistory();
+  // let history = useHistory();
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -19,14 +19,14 @@ const Header = () => {
 
   const submitHandler = (e) => {
     e.preventDefault() ;
-    if (keyword.trim()) {
-      history.push(`/search/${keyword}`);
-    } else {
-      history.push("/");
-    }
+    // if (keyword.trim()) {
+    //   history.push(`/search/${keyword}`);
+    // } else {
+    //   history.push("/");
+    // }
   };
 
-  
+
   return (
     <div>
       {/* Top Header */}

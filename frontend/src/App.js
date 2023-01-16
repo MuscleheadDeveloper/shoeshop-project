@@ -25,16 +25,16 @@ const App = () => {
     <Router>
       <Switch>
         <Route path="/" component={HomeScreen} exact />
-        <Route 
+        {/* <Route 
         path="/search/:keyword" 
         component={HomeScreen} 
         exact />
         <Route path="/page/:pagenumber" component={HomeScreen} exact />
         <Route
-          path="/search/:keyword/page/:pageNumber"
+          path="/search/:keyword/page/:pagenumber"
           component={HomeScreen}
           exact
-        />
+        /> */}
         <Route path="/products/:id" component={SingleProduct} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
