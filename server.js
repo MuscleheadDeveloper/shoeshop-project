@@ -27,13 +27,14 @@ const corsOpts = {
   exposedHeaders: ["Content-Type"],
 };
 
-app.use(cors(corsOpts));
+
 
 dotenv.config();
 connectDb();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(cors(corsOpts));
 
 //API ROUTES
 app.use("/api/import", ImportData);
