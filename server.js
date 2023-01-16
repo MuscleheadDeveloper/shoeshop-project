@@ -34,7 +34,7 @@ connectDb();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cors(corsOpts));
+// app.use(cors(corsOpts));
 
 //API ROUTES
 app.use("/api/import", ImportData);
@@ -55,7 +55,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //ERROR HANDLERS
-app.use(NotFound);
+app.use(NotFound)
 app.use(errorHandler);
 
 const port = process.env.PORT || 1000;
