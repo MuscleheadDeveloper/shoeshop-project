@@ -16,6 +16,10 @@ import OrderScreen from "./screens/OrderScreen";
 import NotFound from "./screens/NotFound";
 import PrivateRouter from "./PrivateRouter";
 
+
+// export const URL = process.env.REACT_APP_SERVER;
+
+
 const App = () => {
   return (
     <Router>

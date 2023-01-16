@@ -7,16 +7,33 @@ import { errorHandler, NotFound } from "./MiddleWare/Errors.js";
 import userRouter from "./Routes/userRoutes.js";
 import orderRouter from "./Routes/orderRoutes.js";
 import path from "path";
-import url from "url";
+import cors from "cors";
+import * as url from "url";
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
-const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const corsOpts = {
+  origin: "*",
+  credentials: true,
+  methods: ["GET", "POST", "HEAD", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: [
+    "Content-Type",
+    "Origin",
+    "X-Api-Key",
+    "X-Requested-With",
+    "Content-Type",
+    "Accept",
+    "Authorization",
+  ],
+  exposedHeaders: ["Content-Type"],
+};
 
+app.use(cors(corsOpts));
 
 dotenv.config();
 connectDb();
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded());
 
 //API ROUTES
 app.use("/api/import", ImportData);
@@ -27,17 +44,14 @@ app.get("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID);
 });
 
-
-//MIDDLEWARE STATIC && FRONTEND FILE
+//  serve static file if in production
 if (process.env.NODE_ENV === "production") {
-  //set static folder up in production
-  app.use(express.static("frontend/build"));
+  app.use(express.static("./frontend/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./frontend/build", "index.html"));
+  });
 }
-
-
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-});
 
 //ERROR HANDLERS
 app.use(NotFound);
