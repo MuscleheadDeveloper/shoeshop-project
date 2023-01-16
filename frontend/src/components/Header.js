@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../Redux/Actions/userActions";
 
 const Header = () => {
-  const [keyword, setKeyword] = useState("");
+  const [keyword, setKeyword] = useState();
   const dispatch = useDispatch();
   let history = useHistory();
 
@@ -25,6 +25,8 @@ const Header = () => {
       history.push("/");
     }
   };
+
+  
   return (
     <div>
       {/* Top Header */}
